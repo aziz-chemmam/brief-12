@@ -34,12 +34,23 @@ class RecettesController extends Controller
      */
     public function store(Request $request)
     {
-        $recette = recettes::create([
-            'name'=> $request->input('name'),
+
+        $imagePath = null;
+
+    if ($request->hasFile('image')) {
+        $imagePath = $request->file('image')->store('images', 'public');
+
+        $imageName = time() . '.' . $request->image->extension();
+        $request->file('image')->storeAs('public/image', $imageName);
+
+        // You can use $imageName wherever you need it, for example, storing in the database.
+    }
+        $recettes = recettes::create([
+            'name' => $request->input('name'),
             'description' => $request->input('description'),
             'ingredients' => $request->input('ingredients'),
-            // 'image' => $imagePath,
-            'categories_id' => $request->input('categoryId'),
+            'image' => $imagePath,
+            'category_id' => $request->input('categoryId'),
         ]);
         return redirect('recettes')->with('Success');
 
@@ -72,7 +83,7 @@ class RecettesController extends Controller
         $recette->name = $request->input('name');
         $recette->description = $request->input('description');
         $recette->ingredients = $request->input('ingredients');
-        // $recette->imagePath = $request->input('imagePath');
+         $recette->imagePath = $request->input('imagePath');
         $recette->categories_id = $request->input('categoryId');
         $recette->update();
         return redirect('recettes')->with('success','recette edited Successfully'); 

@@ -12,7 +12,10 @@ class recettes extends Model
         'name',
         'description',
         'ingredients',
-        'categories_id',
-        
+        'image',
+        'category_id',
     ];
+
 }
+
+
