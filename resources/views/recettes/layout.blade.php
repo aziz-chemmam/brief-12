@@ -58,6 +58,5 @@
 
   
 
-        <script src="{{ url("js/script.js") }}"></script>
 </html>
 </body>

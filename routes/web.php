@@ -20,3 +20,6 @@ Route::get('/', function () {
 });
 Route::get('/recettes',[RecettesController::class,"create"]);
 Route::post('/recettes',[RecettesController::class,"store"]);
+Route::get('delete-recette/{id}',[RecettesController::class,"destroy"]);
+Route::get('editRecette/{id}',[RecettesController::class,"edit"]);
+Route::post('editRecette/{id}', [RecettesController::class, "update"]);

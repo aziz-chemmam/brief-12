@@ -82,8 +82,8 @@
   </div>
 
   <div class="flex gap-4 items-end mb-3 mr-5 ">
-    <a href="" class="btn btn-danger flex flex-end text-red-700  btn-sm">Delete</a>
-  <a href="" class="btn btn-danger flex flex-end text-blue-700  btn-sm">Edit</a>
+    <a href="{{ url('delete-recette/'.$recette->id) }}" class="btn btn-danger flex flex-end text-red-700  btn-sm">Delete</a>
+    <a href="{{ url('editRecette/'.$recette->id) }}" class="btn btn-danger flex flex-end text-blue-700 btn-sm">Edit</a>
 
   </div>
 
@@ -95,3 +95,6 @@
 <script src="{{ url("js/script.js") }}"></script> 
 
 @endsection
+
+
+

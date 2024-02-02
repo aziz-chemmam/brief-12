@@ -56,24 +56,36 @@ class RecettesController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(recettes $recettes)
+    public function edit($id)
     {
-        //
+        $categories = Categories::all();
+        $recette = recettes::find($id);
+        return view('recettes.editRecette',compact( 'categories','recette'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, recettes $recettes)
+    public function update(Request $request, $id)
     {
-        //
+        $recette = recettes::find($id);
+        $recette->name = $request->input('name');
+        $recette->description = $request->input('description');
+        $recette->ingredients = $request->input('ingredients');
+        // $recette->imagePath = $request->input('imagePath');
+        $recette->categories_id = $request->input('categoryId');
+        $recette->update();
+        return redirect('recettes')->with('success','recette edited Successfully'); 
+
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(recettes $recettes)
+    public function destroy($id)
     {
-        //
+        $recette = recettes::find($id);
+        $recette->delete();
+        return redirect()->back()->with('success','deleted');
     }
 }
