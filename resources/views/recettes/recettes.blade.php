@@ -1,8 +1,8 @@
 @extends('recettes.layout')
 @section('content')
 
-<div class="flex justify-end mt-10 mr-10 ">
-    <button class="bg-gray-800 text-white px-2 py-2 rounded-lg " id="btn" >Ajouter Une Recette </button>
+<div class=" flex justify-end mt-10 mr-10 mb-5 ">
+    <button class="bg-gray-800 text-white  px-2 py-2 rounded-lg " id="btn" >Ajouter Une Recette </button>
   </div>
 
 
@@ -57,38 +57,41 @@
 </form>
 </div>
 
+<div class="flex justify-center gap-8">
+
+
 @foreach ($recettes as $recette )
-    
-@endforeach
-<div class="flex max-w-md mt-24 ml-44 overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800">
-    <div class="w-1/3 bg-cover" style="background-image: url('https://images.unsplash.com/photo-1494726161322-5360d4d0eeae?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80')"></div>
 
-    <div class="w-2/3 p-4 md:p-4">
-        <h1 class="text-xl font-bold text-gray-800 dark:text-white">{{ $recette->name }}</h1>
 
-        <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">Lorem ipsum dolor sit amet consectetur adipisicing elit In odit</p>
+<div class="flex flex-col  rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-gray-800 md:max-w-xl md:flex-row">
+  <img
+    class="h-64 w-42 rounded-t-lg object-cover  md:!rounded-none md:!rounded-l-lg"
+    src="https://tecdn.b-cdn.net/wp-content/uploads/2020/06/vertical.jpg"
+    alt="" />
+  <div class="flex flex-col justify-start w-[400px] p-6">
+    <h5
+      class="mb-2 text-xl font-medium text-neutral-800 dark:text-neutral-50">
+      {{ $recette->name }}
+    </h5>
+    <p class="mb-4 text-base text-neutral-600 dark:text-neutral-200">
+      {{ $recette->description }}
+    </p>
+    <p class="text-s text-neutral-500 dark:text-neutral-300">
+      {{ $recette->ingredients }}
+    </p>
+  </div>
 
-        <div class="flex mt-2 item-center">
-            <svg class="w-5 h-5 text-gray-700 fill-current dark:text-gray-300" viewBox="0 0 24 24">
-                <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" />
-            </svg>
+  <div class="flex gap-4 items-end mb-3 mr-5 ">
+    <a href="" class="btn btn-danger flex flex-end text-red-700  btn-sm">Delete</a>
+  <a href="" class="btn btn-danger flex flex-end text-blue-700  btn-sm">Edit</a>
 
-            <svg class="w-5 h-5 text-gray-700 fill-current dark:text-gray-300" viewBox="0 0 24 24">
-                <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" />
-            </svg>
+  </div>
 
-            <svg class="w-5 h-5 text-gray-700 fill-current dark:text-gray-300" viewBox="0 0 24 24">
-                <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" />
-            </svg>
+</div>
 
-            <svg class="w-5 h-5 text-gray-500 fill-current" viewBox="0 0 24 24">
-                <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" />
-            </svg>
+        @endforeach
 
-            <svg class="w-5 h-5 text-gray-500 fill-current" viewBox="0 0 24 24">
-                <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" />
-            </svg>
-        </div>
-<script src="{{ url("js/script.js") }}"></script>
+      </div>
+<script src="{{ url("js/script.js") }}"></script> 
 
 @endsection

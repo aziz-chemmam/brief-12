@@ -52,11 +52,12 @@
   </nav>
 
 
-  <div class="container">
+
         
     @yield('content')
-</div> 
+
   
 
         <script src="{{ url("js/script.js") }}"></script>
 </html>
+</body>
