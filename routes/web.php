@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\RecetteController;
+use App\Http\Controllers\RecettesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,4 +18,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/recettes',[RecetteController::class,"create"]);
+Route::get('/recettes',[RecettesController::class,"create"]);
+Route::post('/recettes',[RecettesController::class,"store"]);
